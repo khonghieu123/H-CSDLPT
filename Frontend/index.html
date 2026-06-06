@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBAR - Tiếng Chim Trí Tuệ</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background animation shapes -->
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
+
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar glass-panel">
+            <div class="logo">
+                <i class="fa-solid fa-dove"></i>
+                <h2>CBAR</h2>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-target="view-mfcc">
+                    <i class="fa-solid fa-chart-bar"></i>
+                    <span>Cơ bản (MFCC)</span>
+                </button>
+                <button class="nav-btn" data-target="view-birdnet">
+                    <i class="fa-solid fa-brain"></i>
+                    <span>Nâng cao (BirdNET)</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer">
+                <p>Hệ thống Tìm kiếm<br>Tiếng chim Đa chiều</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-area">
+            
+            <!-- VIEW: MFCC -->
+            <section id="view-mfcc" class="view-page active-view">
+                <header class="page-header">
+                    <h2><i class="fa-solid fa-chart-bar text-mfcc"></i> Truy vấn Cơ bản (MFCC)</h2>
+                    <p>Sử dụng phương pháp trích xuất đặc trưng truyền thống Mel-Frequency Cepstral Coefficients. Tốc độ nhanh nhưng dễ nhiễu.</p>
+                </header>
+
+                <div class="controls-section glass-panel">
+                    <div class="upload-area drop-zone" id="drop-zone-mfcc">
+                        <input type="file" class="audio-upload" accept="audio/wav, audio/mpeg" hidden>
+                        <div class="upload-content">
+                            <i class="fa-solid fa-cloud-arrow-up upload-icon text-mfcc"></i>
+                            <h3>Tải lên âm thanh (MFCC)</h3>
+                            <p>Kéo thả tệp .wav / .mp3 hoặc <span>nhấn vào đây</span></p>
+                        </div>
+                        <div class="file-info hidden">
+                            <i class="fa-solid fa-music"></i>
+                            <span class="file-name">query.wav</span>
+                            <i class="fa-solid fa-xmark remove-file" title="Xóa tệp"></i>
+                        </div>
+                    </div>
+
+                    <div class="action-area">
+                        <button class="btn-primary btn-mfcc search-btn" disabled>
+                            <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm MFCC
+                        </button>
+                    </div>
+                </div>
+
+                <div class="results-section glass-panel hidden">
+                    <div class="results-header">
+                        <h3>Kết quả MFCC</h3>
+                        <span class="badge badge-mfcc latency-badge">Tốc độ: 0ms</span>
+                    </div>
+                    <div class="results-list"></div>
+                </div>
+                
+                <div class="loader-container hidden">
+                    <div class="spinner spinner-mfcc"></div>
+                    <p>Đang tính toán vector MFCC...</p>
+                </div>
+            </section>
+
+            <!-- VIEW: BirdNET -->
+            <section id="view-birdnet" class="view-page">
+                <header class="page-header">
+                    <h2><i class="fa-solid fa-brain text-birdnet"></i> Truy vấn Nâng cao (BirdNET AI)</h2>
+                    <p>Sử dụng mô hình mạng Nơ-ron sâu BirdNET. Khả năng chống nhiễu tốt, phát hiện ngữ nghĩa chính xác.</p>
+                </header>
+
+                <div class="controls-section glass-panel">
+                    <div class="upload-area drop-zone" id="drop-zone-birdnet">
+                        <input type="file" class="audio-upload" accept="audio/wav, audio/mpeg" hidden>
+                        <div class="upload-content">
+                            <i class="fa-solid fa-cloud-arrow-up upload-icon text-birdnet"></i>
+                            <h3>Tải lên âm thanh (BirdNET)</h3>
+                            <p>Kéo thả tệp .wav / .mp3 hoặc <span>nhấn vào đây</span></p>
+                        </div>
+                        <div class="file-info hidden">
+                            <i class="fa-solid fa-music"></i>
+                            <span class="file-name">query.wav</span>
+                            <i class="fa-solid fa-xmark remove-file" title="Xóa tệp"></i>
+                        </div>
+                    </div>
+
+                    <div class="action-area">
+                        <button class="btn-primary btn-birdnet search-btn" disabled>
+                            <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm AI BirdNET
+                        </button>
+                    </div>
+                </div>
+
+                <div class="results-section glass-panel hidden">
+                    <div class="results-header">
+                        <h3>Kết quả BirdNET</h3>
+                        <span class="badge badge-birdnet latency-badge">Tốc độ: 0ms</span>
+                    </div>
+                    <div class="results-list"></div>
+                </div>
+                
+                <div class="loader-container hidden">
+                    <div class="spinner spinner-birdnet"></div>
+                    <p>Đang quét qua mô hình Deep Learning...</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>

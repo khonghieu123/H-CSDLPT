@@ -1,0 +1,26 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large data files
+data/raw/
+temp/
+
+# Model binaries
+models/
+
+# Environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE settings
+.vscode/
+.vs/
+*.suo
+*.user
+*.userossc
+*.sln
+*.docstates

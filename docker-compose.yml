@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: bird_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: "123"
+      POSTGRES_DB: bird_retrieval
+    volumes:
+      - bird_pg_data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  bird_pg_data:
+    name: bird_pg_data
