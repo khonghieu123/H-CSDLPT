@@ -3,12 +3,16 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Large data files
-data/raw/
+# Exclude all files in data/raw except .gitkeep
+data/raw/*
+!data/raw/.gitkeep
+
+# Exclude temp folder completely
 temp/
 
-# Model binaries
-models/
+# Exclude all files in models except .gitkeep
+models/*
+!models/.gitkeep
 
 # Environments
 .venv/
